@@ -1,0 +1,11 @@
+{
+  "query_1": { "wf_ms": 120.5, "cte_ms": 145.2, "index_speedup": 2.5 },
+  "query_2": { "wf_ms": 300.1, "cte_ms": 280.4, "index_speedup": 1.8 },
+  "query_3": { "wf_ms": 890.3, "cte_ms": 650.7, "index_speedup": 1.0 },
+  "query_4": { "wf_ms": 210.4, "cte_ms": 195.6, "index_speedup": 1.0 },
+  "query_5": { "wf_ms": 450.2, "cte_ms": 380.5, "index_speedup": 1.0 },
+  "pgbench_results": {
+    "wf_tps": 45.2,
+    "cte_tps": 40.1
+  }
+}

@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: analytics_benchmark
+    environment:
+      POSTGRES_DB: analytics
+      POSTGRES_USER: analyst
+      POSTGRES_PASSWORD: benchmark_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - pgdata:/var/lib/postgresql/data
+      - ./queries:/queries
+      - ./mv:/mv
+      - ./benchmarks:/benchmarks
+      - ./results:/results
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U analyst -d analytics"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 1G
+
+volumes:
+  pgdata:
